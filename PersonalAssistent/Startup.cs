@@ -36,16 +36,18 @@ namespace PersonalAssistent
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<ApplicationDbContext>(options =>
+            /*services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                    Configuration.GetConnectionString("DefaultConnection"))); */
+            
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             var connection = @"Server=DESKTOP-TFQ3JM9;Database=aspnet-PersonalAssistent-0BC4D3A2-B5AD-4C58-8044-CA2C4FE46ED6;Trusted_Connection=True;MultipleActiveResultSets=true";
-            services.AddDbContext<AssistentePessoalContext>(options => options.UseSqlServer(connection));
+            services.AddDbContext<Models.AssistentePessoalContext>(options => options.UseSqlServer(connection));
+
+            services.AddDefaultIdentity<IdentityUser>()
+                .AddEntityFrameworkStores<Models.AssistentePessoalContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

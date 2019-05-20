@@ -6,9 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace PersonalAssistent.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class AssistentePessoalContext : IdentityDbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public AssistentePessoalContext(DbContextOptions<AssistentePessoalContext> options)
             : base(options)
         {
         }
